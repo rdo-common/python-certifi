@@ -5,7 +5,7 @@
 
 Name:           python-certifi
 Version:        0.0.8
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Mozilla's SSL Certs
 
 License:        ISC and GPLv2 and MPLv1.1 and LGPLv2+
@@ -37,6 +37,9 @@ sed -i 's|#!/usr/bin/env python||' certifi/core.py
 
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.0.8-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.0.8-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
