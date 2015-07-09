@@ -9,7 +9,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2015.04.28
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPLv2.0
@@ -100,6 +100,10 @@ popd
 %endif # with_python3
 
 %changelog
+* Thu Jul 09 2015 William Moreno Reyes <williamjmorenor at gmail.com> 
+- 2015.04.28-5
+- rebuilt
+
 * Wed Jul 08 2015 William Moreno Reyes  <williamjmorenor at gmail.com> 
 - 2015.04.28-4
 - Initial Import of #1232433
