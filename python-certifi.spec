@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2015.04.28
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPLv2.0
@@ -85,6 +85,9 @@ find %{_builddir}/%{pypi_name}-%{version} -name '*.py' \
 %{python3_sitelib}/%{pypi_name}-*-py?.?.egg-info
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2015.04.28-7
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Wed Sep 16 2015 William Moreno Reyes <williamjmorenor at gmail.com> - 2015.04.28-6
 - Update python macros
 - Include subpackages for Python2 and Python3
