@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2015.04.28
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPLv2.0
@@ -85,6 +85,9 @@ find %{_builddir}/%{pypi_name}-%{version} -name '*.py' \
 %{python3_sitelib}/%{pypi_name}-*-py?.?.egg-info
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2015.04.28-9
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2015.04.28-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
