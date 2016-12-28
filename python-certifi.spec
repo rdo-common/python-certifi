@@ -1,15 +1,15 @@
 %global pypi_name certifi
 
 Name:           python-%{pypi_name}
-Version:        2015.04.28
-Release:        10%{?dist}
+Version:        2016.9.26
+Release:        1%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPLv2.0
 #https://www.mozilla.org/MPL/2.0/
 URL:            http://certifi.io/en/latest/
-Source0:        https://pypi.python.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch1:         certifi-2015.04.28-remove-bundle-cert.patch
+Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch1:         certifi-2016.9.26-remove-bundle-cert.patch
 
 BuildArch:      noarch
  
@@ -21,24 +21,28 @@ Requires:       python3
 Requires:       ca-certificates
 
 %description
-Certifi is a carefully curated collection of Root Certificates for
- validating the trustworthiness of SSL certificates while verifying 
-the identity of TLS hosts. It has been extracted from the Requests project.
+Certifi is a carefully curated collection of Root Certificates for validating
+the trustworthiness of SSL certificates while verifying the identity of TLS
+hosts. It has been extracted from the Requests project.
 
-Please note that this Fedora package links to the bundle certificates 
-of ca-certificates. For Python 3 support install python3-certifi
+Please note that this Fedora package does not actually include a certificate
+collection at all. It reads the system shared certificate trust collection
+instead. For more details on this system, see the ca-certificates package.
 
 %package -n python2-%{pypi_name}
 Summary:        %{sum}
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 %description -n python2-%{pypi_name}
-Certifi is a carefully curated collection of Root Certificates for
- validating the trustworthiness of SSL certificates while verifying
-the identity of TLS hosts. It has been extracted from the Requests project.
+Certifi is a carefully curated collection of Root Certificates for validating
+the trustworthiness of SSL certificates while verifying the identity of TLS
+hosts. It has been extracted from the Requests project.
 
-Please note that this Fedora package links to the bundle certificates
-of ca-certificates. For Python 3 support install python3-certifi
+Please note that this Fedora package does not actually include a certificate
+collection at all. It reads the system shared certificate trust collection
+instead. For more details on this system, see the ca-certificates package.
+
+This package provides the Python 2 certifi library.
 
 
 %package -n python3-%{pypi_name}
@@ -47,12 +51,15 @@ Group:          Development/Libraries
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
 %description -n python3-%{pypi_name}
-Python 3 Certifi is a carefully curated collection of Root Certificates for
- validating the trustworthiness of SSL certificates while verifying 
-the identity of TLS hosts. It has been extracted from the Requests project.
+Certifi is a carefully curated collection of Root Certificates for validating
+the trustworthiness of SSL certificates while verifying the identity of TLS
+hosts. It has been extracted from the Requests project.
 
-Please note that this Fedora package links to the bundle certificates 
-of ca-certificates.
+Please note that this Fedora package does not actually include a certificate
+collection at all. It reads the system shared certificate trust collection
+instead. For more details on this system, see the ca-certificates package.
+
+This package provides the Python 3 certifi library.
 
 
 %prep
@@ -60,7 +67,7 @@ of ca-certificates.
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 rm -rf certifi/*.pem
-%patch1
+%patch1 -p1
 
 #drop shebangs from python_sitearch
 find %{_builddir}/%{pypi_name}-%{version} -name '*.py' \
@@ -85,6 +92,9 @@ find %{_builddir}/%{pypi_name}-%{version} -name '*.py' \
 %{python3_sitelib}/%{pypi_name}-*-py?.?.egg-info
 
 %changelog
+* Wed Dec 28 2016 Adam Williamson <awilliam@redhat.com> - 2016.9.26-1
+- New release 2016.9.26
+
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 2015.04.28-10
 - Rebuild for Python 3.6
 

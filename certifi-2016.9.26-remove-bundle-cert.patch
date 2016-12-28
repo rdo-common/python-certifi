@@ -1,0 +1,35 @@
+--- certifi-2016.9.26/certifi/core.py	2016-12-28 12:58:47.917774691 -0800
++++ certifi-2016.9.26/certifi/core.py.new	2016-12-28 13:04:18.631100213 -0800
+@@ -13,24 +13,27 @@
+ 
+ class DeprecatedBundleWarning(DeprecationWarning):
+     """
+-    The weak security bundle is being deprecated. Please bother your service
+-    provider to get them to stop using cross-signed roots.
++    The weak security bundle is being deprecated upstream. In this Fedora
++    package, there *is* no weak security bundle, you will get the shared
++    system certificate trust bundle from both where() and old_where().
++    Please bother your service provider to get them to stop using
++    cross-signed roots.
+     """
+ 
+ 
+ def where():
+     f = os.path.split(__file__)[0]
+ 
+-    return os.path.join(f, 'cacert.pem')
++    return "/etc/pki/tls/certs/ca-bundle.crt"
+ 
+ 
+ def old_where():
+     warnings.warn(
+-        "The weak security bundle is being deprecated.",
++        "Weak security bundle is deprecated upstream, doesn't exist on Fedora",
+         DeprecatedBundleWarning
+     )
+     f = os.path.split(__file__)[0]
+-    return os.path.join(f, 'weak.pem')
++    return "/etc/pki/tls/certs/ca-bundle.crt"
+ 
+ if __name__ == '__main__':
+     print(where())
