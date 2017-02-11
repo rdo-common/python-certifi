@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2016.9.26
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPLv2.0
@@ -92,6 +92,9 @@ find %{_builddir}/%{pypi_name}-%{version} -name '*.py' \
 %{python3_sitelib}/%{pypi_name}-*-py?.?.egg-info
 
 %changelog
+* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2016.9.26-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Wed Dec 28 2016 Adam Williamson <awilliam@redhat.com> - 2016.9.26-1
 - New release 2016.9.26
 
