@@ -15,9 +15,6 @@ BuildArch:      noarch
  
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-devel
-Requires:       python3
 Requires:       ca-certificates
 
 %description
@@ -45,23 +42,6 @@ instead. For more details on this system, see the ca-certificates package.
 This package provides the Python 2 certifi library.
 
 
-%package -n python3-%{pypi_name}
-Summary:        Python 3 package for providing Mozilla's CA Bundle
-Group:          Development/Libraries
-%{?python_provide:%python_provide python3-%{pypi_name}}
-
-%description -n python3-%{pypi_name}
-Certifi is a carefully curated collection of Root Certificates for validating
-the trustworthiness of SSL certificates while verifying the identity of TLS
-hosts. It has been extracted from the Requests project.
-
-Please note that this Fedora package does not actually include a certificate
-collection at all. It reads the system shared certificate trust collection
-instead. For more details on this system, see the ca-certificates package.
-
-This package provides the Python 3 certifi library.
-
-
 %prep
 %setup -q -n %{pypi_name}-%{version}
 # Remove bundled egg-info
@@ -75,21 +55,14 @@ find %{_builddir}/%{pypi_name}-%{version} -name '*.py' \
 
 %build
 %py2_build
-%py3_build
 
 %install
 %py2_install
-%py3_install
 
 %files -n python2-%{pypi_name}
 %doc README.rst
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/%{pypi_name}-*-py?.?.egg-info
-
-%files -n python3-%{pypi_name}
-%doc README.rst
-%{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-*-py?.?.egg-info
 
 %changelog
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2016.9.26-2
